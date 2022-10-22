@@ -164,17 +164,11 @@
         }
     }
 
-    function DecidirCrearNubes(){
-        tiempoHastaNube -= deltaTime;
-        if(tiempoHastaNube <= 0){
-            CrearNube();
-        }
-    }
 
     function CrearObstaculo(){
         var obstaculo = document.createElement("div");
         contenedor.appendChild(obstaculo);
-        obstaculo.classList.add('cactus');
+        obstaculo.classList.add("cactus");
         if(Math.random() > 0.5) obstaculo.classList.add("cactus2");
         obstaculo.posX = contenedor.clientWidth;
         obstaculo.style.left = contenedor.clientWidth + "px";
@@ -184,17 +178,7 @@
 
     }
 
-    function CrearNube(){
-        var nube = document.createElement('div');
-        contenedor.appendChild(nube);
-        nube.classList.add("nube");
-        nube.posX = contenedor.clientWidth;
-        nube.style.left = contenedor.clientWidth + "px";
-        nube.style.bottom = minNubeY + Math.random() * (maxNubeY-minNubeY) + "px";
 
-        nubes.push(nube);
-        tiempoHastaNube = tiempoNubeMin + Math.random() * (tiempoNubeMax-tiempoNubeMin) / gameVel;
-    }
 
     function MoverObstaculo(){
         for(var i = obstaculos.length - 1; i >= 0; i--){
@@ -213,6 +197,26 @@
         }
 
 
+    }
+
+    
+    function DecidirCrearNubes(){
+        tiempoHastaNube -= deltaTime;
+        if(tiempoHastaNube <= 0){
+            CrearNube();
+        }
+    }
+
+    function CrearNube(){
+        var nube = document.createElement('div');
+        contenedor.appendChild(nube);
+        nube.classList.add("nube");
+        nube.posX = contenedor.clientWidth;
+        nube.style.left = contenedor.clientWidth + "px";
+        nube.style.bottom = minNubeY + Math.random() * (maxNubeY-minNubeY) + "px";
+
+        nubes.push(nube);
+        tiempoHastaNube = tiempoNubeMin + Math.random() * (tiempoNubeMax-tiempoNubeMin) / gameVel;
     }
 
     function MoverNubes(){
